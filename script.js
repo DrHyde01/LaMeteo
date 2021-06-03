@@ -57,8 +57,12 @@ function AppelAPI(long, lat) {
         // sinon les icônes nuit
         imgIcon.src = `icons/nuit/${resultAPI.current.weather[0].icon}.svg`;
         background.style.background =
-          "linear-gradient(176deg, rgb(6, 15, 51) 12%, rgb(33, 45, 78) 100%)"; // et un background pour la nuit ! 
+          "linear-gradient(176deg, rgb(6, 15, 51) 12%, rgb(33, 45, 78) 100%)"; // et un background pour la nuit !
       }
       imgIconMini.src = `icons/jour/${resultAPI.daily[1].weather[0].icon}.svg`; // afficher une icône en fonction du temps à J +1
+    })
+
+    .catch(function (error) { // Si erreur de l'API 
+      alert(`Meteo indisponible :/`);
     });
 }
