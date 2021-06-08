@@ -36,7 +36,7 @@ function AppelAPI(long, lat) {
 
     .then((data) => {
       // nous retourne le data de l'API, en fonction des données demandées via l'URL
-      //console.log(data);
+      console.log(data);
       resultAPI = data; // on va afficher dans le bloc info les données récupérées
 
       temps.innerText = resultAPI.current.weather[0].description;
@@ -46,6 +46,7 @@ function AppelAPI(long, lat) {
       temperatureDemain.innerText = `${Math.trunc(
         resultAPI.daily[1].temp.day
       )}°`; // affichage des températures à J+1
+      imgIconMini.src = `icons/jour/${resultAPI.daily[1].weather[0].icon}.svg`; // afficher une icône en fonction du temps à J +1
 
       // Mise en place de l'icône dynamique
       let heureActuelle = new Date().getHours(); // récupération de l'heure actuelle
@@ -59,10 +60,10 @@ function AppelAPI(long, lat) {
         background.style.background =
           "linear-gradient(176deg, rgb(6, 15, 51) 12%, rgb(33, 45, 78) 100%)"; // et un background pour la nuit !
       }
-      imgIconMini.src = `icons/jour/${resultAPI.daily[1].weather[0].icon}.svg`; // afficher une icône en fonction du temps à J +1
     })
 
-    .catch(function (error) { // Si erreur de l'API 
+    .catch(function (error) {
+      // Si erreur de l'API
       alert(`Meteo indisponible :/`);
     });
 }
